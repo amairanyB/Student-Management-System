@@ -1,6 +1,7 @@
 package com.StudentsManagementSystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.StudentsManagementSystem.entity.Student;
@@ -19,18 +20,13 @@ public class Controller {
 
         return "home"; // Vista page html archivo -> home.html
     }
-
+    
     @GetMapping("/students")
-    public String getMethodName(@RequestParam String param) {
-        return new String();
+    public String getgetAllStudents(Model model) {
+
+        model.addAttribute("studnets", service.getAllStudents());
+        return "students"; // vista 
     }
     
-    public String getAllStudents(Model model){
-
-        model.addAttribute("students", service.getAllStudents());
-
-        return "students";
-
-    }
 
 }

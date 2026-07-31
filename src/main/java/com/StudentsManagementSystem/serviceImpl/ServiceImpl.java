@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.StudentsManagementSystem.entity.Student;
-
 import com.StudentsManagementSystem.service.StudentService;
 
+@Service
 public class ServiceImpl implements StudentService{
     @Autowired
-    com.StudentsManagementSystem.repository.Studentrepository StudentRepository;
+    com.StudentsManagementSystem.repository.StudentRepository StudentRepository;
 
     @Override
     public List<Student> getAllStudents(){
