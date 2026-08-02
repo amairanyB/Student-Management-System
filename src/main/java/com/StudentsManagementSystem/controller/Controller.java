@@ -17,16 +17,17 @@ public class Controller {
 
     @GetMapping("/home")
     public String home(){
-
-        return "home"; // Vista page html archivo -> home.html
+        return "home"; // vista pagina html archivo -> home.html
     }
-    
+
     @GetMapping("/students")
-    public String getgetAllStudents(Model model) {
-
-        model.addAttribute("studnets", service.getAllStudents());
-        return "students"; // vista 
+    public String getAllStudents(Model model){
+        model.addAttribute("students", service.getAllStudents());
+        return "students";
     }
+
+    
+    
     
 
 }

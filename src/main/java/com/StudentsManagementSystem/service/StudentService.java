@@ -7,10 +7,6 @@ import com.StudentsManagementSystem.service.StudentService;
 
 public interface StudentService {
 
-    @Override
-    public List<Student> getAllStudents(){
-
-        retur null;
-    }
+    public List<Student> getAllStudents();
 
 }
