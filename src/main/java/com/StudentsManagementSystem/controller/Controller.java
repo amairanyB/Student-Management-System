@@ -4,11 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.StudentsManagementSystem.entity.Student;
 import com.StudentsManagementSystem.service.StudentService;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @org.springframework.stereotype.Controller
@@ -39,9 +42,25 @@ public class Controller {
     @PostMapping("/students")
     public String saveStudent(@ModelAttribute("student")Student student){
         service.saveStudent(student);
-        return "redirect:/students";
+        return "redirect:/students"; // redirige a la lista de estudiantes
+    }
+
+    @GetMapping("/students/edit/{id}")
+    public String editStudentForm(@PathVariable int id, Model model){
+        model.addAttribute("student", service.getById(id));
+        return "edit_student";
     }
     
-    
+    @PostMapping("/students/edit/{id}")
+    public String updateStudent(@PathVariable int id, @ModelAttribute("student")Student student, Model model){
+        Student existingStudent = service.getById(id);
+
+        existingStudent.setFirstName(student.getFirstName());
+        existingStudent.setLastName(student.getLastName());
+        existingStudent.setEmail(student.getEmail());
+
+        service.saveStudent(existingStudent);
+        return "redirect:/students";
+    }
 
 }

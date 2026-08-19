@@ -11,4 +11,6 @@ public interface StudentService {
 
     public Student saveStudent(Student student);
 
+    public Student getById(int id);
+
 }
