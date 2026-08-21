@@ -13,4 +13,6 @@ public interface StudentService {
 
     public Student getById(int id);
 
+    public void deleteById(int id);
+
 }

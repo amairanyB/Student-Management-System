@@ -32,4 +32,9 @@ public class ServiceImpl implements StudentService{
         return StudentRepository.findById(id).get();
     }
 
+    @Override
+    public void deleteById(int id){
+        StudentRepository.deleteById(id);
+    }
+
 }
